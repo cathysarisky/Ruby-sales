@@ -2,7 +2,7 @@
     .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
-        z-index: 10; /* Sit on top */
+        z-index: 20; /* Sit on top */
         left: 0;
         top: 0;
         width: 100%; /* Full width */
@@ -15,15 +15,25 @@
       /* Modal Content/Box */
       .modal-content {
         background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
-        padding: 20px;
+        margin: 5% auto; /* 5% from the top and centered */
+        padding: 0px;
         border: 1px solid #888;
         width: 80%; /* Could be more or less, depending on screen size */
+      }
+      .modal-body {
+        padding: 20px;
+        color: #000000;
+      }
+      .modal-header {
+        background-color: var(--ghost-accent-color);
+        padding: 20px;
+        width: 100%;
+        color: #ffffff;
       }
       
       /* The Close Button */
       .close {
-        color: #aaa;
+        color: #ffffff;
         float: right;
         font-size: 28px;
         font-weight: bold;

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{meta_title}}</title>
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
-
+    <script src="https://js.stripe.com/v3/"></script>
     {{ghost_head}}
 </head>
 
@@ -45,8 +45,18 @@
 
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <div class="modal-header"><span>SHOPPING CART</span><span class="close">&times;</span></div>
+    <div class="modal-body">
+        <div class="cart-items"><p>No cart items yet?</p></div>
+         <div class="cart-footer modal-header">
+                <div class="subtotal">
+                    Subtotal (0 items): $0
+                </div>
+                <div class="checkout" id="checkout" data-stripekey="{{@custom.stripe_readonly_key}}">
+                    Proceed to checkout
+                </div>
+            </div>
+        </div>
   </div>
 
 </div>

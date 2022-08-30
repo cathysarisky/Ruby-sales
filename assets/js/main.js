@@ -1,3 +1,3 @@
-(function () {
-    pagination(true);
-})();
+//(function () {
+//    pagination(true);
+//})();

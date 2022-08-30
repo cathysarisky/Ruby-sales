@@ -1,15 +1,18 @@
 // Code adapted from https://www.youtube.com/watch?v=UcrypywtAm0
-/* 
+
+let stripe_key = document.querySelector('[data-stripekey]').dataset['stripekey']
+
+console.log(stripe_key)
 // SELECT ELEMENTS
 const productsEl = document.querySelector(".products");
 const cartItemsEl = document.querySelector(".cart-items");
 const subtotalEl = document.querySelector(".subtotal");
-const totalItemsInCartEl = document.querySelector(".nav-cart-demo");
+const totalItemsInCartEl = document.querySelector(".nav-cart");
 
 // toggle cart visibility
 function showCart() {
-  document.getElementById('cart').style.display = "block"
-  console.log('cart shown')
+  document.getElementById('cartModal').style.display = "block"
+  
 }
 
 // RENDER PRODUCTS
@@ -159,11 +162,11 @@ function changeNumberOfUnits(action, id) {
 
   updateCart();
 }
-
+/* DON'T NEED THIS FOR GENERIC PAGE
 let products = []
 fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
   method: "GET",  
-  headers: {"Authorization": "Bearer rk_test_CODE HERE"}
+  headers: {"Authorization": "Bearer " + stripe_key}
 }).then(response => response.json())
 .then(json => {
 
@@ -184,8 +187,8 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
     addToCart(productToAdd) 
     showCart()
     };})
-
-var stripe = Stripe('pk_test_CODE HERE');
+*/
+var stripe = Stripe(stripe_key);
 
 function checkout() {
     let lineArray = []
@@ -213,15 +216,15 @@ checkoutEl.addEventListener('click', checkout)
 
 totalItemsInCartEl.addEventListener('click',showCart)
 totalItemsInCartEl.classList.add('bi-bag')
-*/
+
 
 
     // Get the modal
     var modal = document.getElementById("cartModal");
     console.log('modal is',modal)
     // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-    
+    var btn = document.getElementsByClassName("nav-cart")[0];
+    btn.innerHTML = "CART"
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     
