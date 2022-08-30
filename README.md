@@ -22,7 +22,7 @@ The `zip` Gulp task packages the theme files into `dist/ruby-sales.zip`, which y
 yarn zip
 ```
 
-# How to configure
+# How to configure Ruby-sales
 
 You need a Stripe account.  Make a RESTRICTED, READ-ONLY key with only Prices and Products allowed.  That goes into the Ghost admin panel.  You also need to paste in your public key.
 
@@ -43,6 +43,7 @@ Two major options for how to show products for purchase:
 * Clean up spots that are hard-coded and should use the Ghost admin panel settings.
 * Fix layout on individual pages, figure out how to use a product template only on product posts, without having to set it for each one.
 * Improve this documentation. :)
+* Add non-USD pricing support.
 
 
 # Copyright & License
