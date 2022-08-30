@@ -162,7 +162,7 @@ function changeNumberOfUnits(action, id) {
 
   updateCart();
 }
-/* DON'T NEED THIS FOR GENERIC PAGE
+//DON'T NEED THIS FOR GENERIC PAGE
 let products = []
 fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
   method: "GET",  
@@ -187,7 +187,7 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
     addToCart(productToAdd) 
     showCart()
     };})
-*/
+
 var stripe = Stripe(stripe_key);
 
 function checkout() {
