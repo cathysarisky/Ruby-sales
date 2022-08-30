@@ -16,9 +16,10 @@
             
             {{> "post-image"}}
         </header>
-        <div class="price">{{title}} for only <span class="pricetag" id="{{slug}}"></span></div>
-        <span style="z-index: 10" data_slug="{{slug}}" class="post-more addtocart">Add to cart</span>
+
         <div class="gh-content gh-canvas">
+        <div class="price">{{title}} for only <span class="pricetag" id="{{slug}}"></span></div>
+        <span  data_slug="{{slug}}" class="post-more addtocart">Add to cart</span>
             {{content}}
         </div>
 
@@ -34,9 +35,7 @@
 
     {{/post}}
 
-    {{#if @custom.show_related_posts}}
-        {{> "related-posts"}}
-    {{/if}}
+
 
 </main>
 
