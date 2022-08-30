@@ -1,0 +1,79 @@
+{{!< default}}
+
+<div class="gh-outer">
+<main class="site-main gh-inner">
+
+    <div class="post-feed gh-feed">
+        <div>Welcome to my little store on the web!</div>
+        {{#foreach posts}}
+            <article data_slug="{{slug}}" class="{{post_class}} u-shadow"{{#if primary_tag.accent_color}} style="--tag-color: {{primary_tag.accent_color}};"{{/if}}>
+        
+    {{#if feature_image}}
+        {{#if featured}}
+            <img
+                class="post-image u-object-fit"
+                src="{{img_url feature_image}}"
+                alt="{{title}}"
+                loading="lazy"
+            >
+        {{else}}
+        <figure class="post-media">
+            <div class="u-placeholder same-height rectangle">
+                <img
+                    class="post-image u-object-fit"
+                    srcset="{{img_url feature_image size="s"}} 400w,
+                            {{img_url feature_image size="m"}} 750w,
+                            {{img_url feature_image size="l"}} 960w,
+                            {{img_url feature_image size="xl"}} 1140w,
+                            {{img_url feature_image size="xxl"}} 1920w"
+                    sizes="600px"
+                    src="{{img_url feature_image size="l"}}"
+                    alt="{{title}}"
+                    loading="lazy"
+                >
+            </div>
+        </figure>
+        {{/if}}
+    {{/if}}
+
+    <div class="post-wrapper">
+        
+        <header class="post-header">
+                <span class="post-tag"> {{#foreach tags from=2 }}{{name}}<br>{{/foreach}}</span>
+            <h2 class="post-title">
+                {{title}}
+            </h2>
+        </header>
+
+        {{#if excerpt}}
+            <div class="post-excerpt">
+                {{excerpt words="20"}}
+            </div>
+        {{/if}}
+    </div>
+
+    <footer class="post-footer">
+        <span class="post-more"><a class="post-link" href="{{url}}">Details</a></span>
+        <span style="z-index: 20" data_slug="{{slug}}" class="post-more addtocart">Add to cart</span>
+
+    </footer>
+
+</article>
+
+        {{/foreach}}
+    </div>
+
+</main>
+</div>
+<script> 
+ const cartEls = document.querySelectorAll('.addtocart');
+
+cartEls.forEach(element=> {
+  element.addEventListener('click', function handleClick(event) {
+  console.log(event.target.getAttribute("data_slug"));
+  addToCart(event.target.getAttribute("data_slug"))
+
+  });
+});
+
+</script> 
