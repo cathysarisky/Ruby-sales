@@ -1,6 +1,8 @@
 # Ruby-sales
 This theme is a fork of the Ruby theme, adding a sales interface to Ghost.
 
+WORK IN PROGRESS.  Some of what's below is current vapor-ware/planned.  You were warned.
+
 Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
 
 ```bash
