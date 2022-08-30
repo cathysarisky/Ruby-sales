@@ -35,7 +35,7 @@
   /* unit price */
   .cart-item .unit-price {
     flex: 1;
-    font-size: 1rem;
+
   }
   /* units */
   .cart-item .units {
@@ -43,7 +43,7 @@
   }
   .cart-item .units .number {
     margin: 0 10px;
-    font-size: 1rem;
+
   }
   .cart-item .units .btn {
     width: 20px;
@@ -59,17 +59,16 @@
   
   /* cart footer */
   .cart-footer {
-    width: 100%;
+
     margin-top: 50px;
   }
   .cart-footer div {
     display: flex;
     align-items: center;
     justify-content: center;
-  
-    padding: 15px 0;
-  
-    font-size: 1.1rem;
+    width: auto;
+
+
   }
 
   .cart-footer .checkout {

@@ -48,11 +48,18 @@
     <div class="modal-header"><span>SHOPPING CART</span><span class="close">&times;</span></div>
     <div class="modal-body">
         <div class="cart-items"><p>No cart items yet?</p></div>
-         <div class="cart-footer modal-header">
+       
                 <div class="subtotal">
                     Subtotal (0 items): $0
                 </div>
-                <div class="checkout" id="checkout" data-stripekey="{{@custom.stripe_readonly_key}}">
+        
+                <div class="cart-footer modal-header">
+                <div class="checkout" id="checkout" 
+                    data-stripekey="{{@custom.stripe_readonly_key}}" 
+                    data-stripepubkey="{{@custom.stripe_public_key}}"
+                    data-returnurl="{{@site.url}}/thank_you_for_your_purchase"
+                    data-cancelurl="{{@site.url}}/{{url}}"
+                    >
                     Proceed to checkout
                 </div>
             </div>

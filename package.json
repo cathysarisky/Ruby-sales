@@ -66,6 +66,10 @@
                 "type": "text",
                 "default": ""
             },
+            "stripe_public_key": {
+                "type": "text",
+                "default": ""
+            },
             "storefront_slug": {
                 "type": "text",
                 "default": "shop"

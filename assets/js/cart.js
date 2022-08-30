@@ -1,8 +1,10 @@
 // Code adapted from https://www.youtube.com/watch?v=UcrypywtAm0
 
 let stripe_key = document.querySelector('[data-stripekey]').dataset['stripekey']
+let stripe_pub_key = document.querySelector('[data-stripepubkey]').dataset['stripepubkey']
+let stripe_returnurl = document.querySelector('[data-returnurl]').dataset['returnurl']
+let stripe_cancelurl = document.querySelector('[data-cancelurl]').dataset['cancelurl']
 
-console.log(stripe_key)
 // SELECT ELEMENTS
 const productsEl = document.querySelector(".products");
 const cartItemsEl = document.querySelector(".cart-items");
@@ -109,10 +111,10 @@ function renderCartItems() {
         <div class="cart-item">
             <div class="item-info" >
                 <img src="${item.imgSrc}" alt="${item.name}">
-                <h4>${item.name}</h4>
+                ${item.name}
             </div>
             <div class="unit-price">
-                <small>$</small>${item.price}
+                $${item.price}
             </div>
             <div class="units">
                 <div class="btn minus" onclick="changeNumberOfUnits('minus', '${item.id}')">-</div>
@@ -188,9 +190,10 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
     showCart()
     };})
 
-var stripe = Stripe(stripe_key);
+var stripe = Stripe(stripe_pub_key);
 
 function checkout() {
+  console.log('checkout called')
     let lineArray = []
     for (let item of cart) {
         lineArray.push({
@@ -204,8 +207,8 @@ function checkout() {
   shippingAddressCollection: {
     allowedCountries: ['US'],
   },
-  successUrl: 'https://example.com/success',
-  cancelUrl: 'https://example.com/cancel',
+  successUrl: stripe_returnurl,
+  cancelUrl: stripe_cancelurl,
 }).then(function (result) {
 
   console.log(result.error.message)
