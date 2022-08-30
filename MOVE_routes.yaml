@@ -1,0 +1,15 @@
+routes:
+
+collections:
+  /products/:
+     permalink: /products/{slug}/
+     template: storefront
+     filter: primary_tag:products
+  /:
+     permalink: /{slug}/
+     template: index
+
+
+taxonomies:
+  tag: /tag/{slug}/
+
