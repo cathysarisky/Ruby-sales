@@ -34,7 +34,7 @@ function renderProducts() {
                         <p>
                             ${product.description}
                         </p>
-                        <p><a href="/${product.id}">More details</a></p>
+                        <p><a href="/${product.slug}">More details</a></p>
                     </div>
                     <div class="add-to-cart bi-bag-plus" onclick="addToCart('${product.id}')">
                         
@@ -55,10 +55,10 @@ function addToCart(id) {
   console.log('asked to add with id',id)
   // check if product already exist in cart
   
-  if (cart.some((item) => item[id].toUpperCase() == id.toUpperCase())) {
+  if ((cart.some((item) => item['slug'] == id)) || (cart.some((item) => item['id'] == id))) {
     changeNumberOfUnits("plus", id);
   } else {
-    const item = products.find((product) => product.id.toUpperCase() === id.toUpperCase());
+    const item = products.find((product) => product.slug === id);
     console.log('item is',item)
     cart.push({
       ...item,
@@ -97,7 +97,7 @@ function renderSubtotal() {
   });
 
   subtotalEl.innerHTML = `Subtotal (${totalItems} items): $${totalPrice.toFixed(2)}`;
-  totalItemsInCartEl.innerHTML = totalItems;
+  totalItemsInCartEl.innerHTML = "CART("+totalItems+")";
 }
 
 // render cart items
@@ -131,17 +131,18 @@ function renderCartItems() {
 function removeItemFromCart(id) {
   cart = cart.filter((item) => {
 
-    return (item.id !== id) })
+    return (item.slug !== id) })
   
   updateCart();
 }
 
 // change number of units for an item
 function changeNumberOfUnits(action, id) {
+  console.log('called changeNumberOfUnits with ', action, id)
   cart = cart.map((item) => {
     let numberOfUnits = item.numberOfUnits;
 
-    if (item.id === id) {
+    if (item.slug === id || item.id === id) {
       if (action === "minus" && numberOfUnits > 1) {
         numberOfUnits--;
 
@@ -164,7 +165,8 @@ function changeNumberOfUnits(action, id) {
 
   updateCart();
 }
-//DON'T NEED THIS FOR GENERIC PAGE
+//DON'T NEED THIS FOR GENERIC PAGE ?
+
 let products = []
 fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
   method: "GET",  
@@ -175,6 +177,7 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
   for (let element of json.data) {
     products.push({
       id: element.product.id, 
+      slug: element.product.id.toLowerCase(),
       price_id: element.id,
       name: element.product.name,
       description: element.product.description,
@@ -184,11 +187,13 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
   })
   }
   
-}).then(() => {renderProducts()
-  if (productToAdd) {
-    addToCart(productToAdd) 
-    showCart()
-    };})
+}).then(() => {
+  if (productsEl) {
+    // this is a page with a place for displaying products
+    renderProducts()
+  }
+  
+})
 
 var stripe = Stripe(stripe_pub_key);
 
@@ -242,8 +247,12 @@ totalItemsInCartEl.classList.add('bi-bag')
     }
     
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
+  //  window.onclick = function(event) {
+  //    console.log('logging ',event)
+  //    if (event.target == modal) {
+  //      modal.style.display = "none";
+  //    }
+  //  }
+
+// Need to update the cart items display on header
+renderSubtotal() ;
