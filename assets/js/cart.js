@@ -163,7 +163,7 @@ function changeNumberOfUnits(action, id) {
 let products = []
 fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
   method: "GET",  
-  headers: {"Authorization": "Bearer rk_test_51Lbj8GHXfUM0q3dxPTHU5cP5i4WrkcPteS9kJ37ebdfhAMHQ76c2rx2dGvkRw3DSnVGpEccGOaPPOjpZECxtzLjD00Qik1x61v"}
+  headers: {"Authorization": "Bearer rk_test_CODE HERE"}
 }).then(response => response.json())
 .then(json => {
 
@@ -185,7 +185,7 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
     showCart()
     };})
 
-var stripe = Stripe('pk_test_51Lbj8GHXfUM0q3dxZb4vX0Ui9hcSOmX36z6ksDLNsOPwzzdYX9C8dxAKgnADMJiahZcNUmFDclAiqfFsd1BNgBiH00fFwTvVf6');
+var stripe = Stripe('pk_test_CODE HERE');
 
 function checkout() {
     let lineArray = []

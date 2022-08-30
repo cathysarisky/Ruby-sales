@@ -1,15 +1,5 @@
-# Ruby
-
-A multi-column [Ghost](https://github.com/TryGhost/Ghost) theme with a unique card layout. Make your publication more organized with cards and widgets.
-
-**Demo: https://ruby.ghost.io**
-
-# Instructions
-
-1. [Download this theme](https://github.com/TryGhost/Ruby/archive/main.zip)
-2. Log into Ghost, and go to the `Design` settings area to upload the zip file
-
-# Development
+# Ruby-sales
+This theme is a fork of the Ruby theme.
 
 Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
 
@@ -23,16 +13,23 @@ yarn dev
 
 Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
 
-The `zip` Gulp task packages the theme files into `dist/ruby.zip`, which you can then upload to your site.
+The `zip` Gulp task packages the theme files into `dist/ruby-sales.zip`, which you can then upload to your site.
 
 ```bash
 yarn zip
 ```
 
-# Contribution
+# How to configure
 
-This repo is synced automatically with [TryGhost/Themes](https://github.com/TryGhost/Themes) monorepo. If you're looking to contribute or raise an issue, head over to the main repository [TryGhost/Themes](https://github.com/TryGhost/Themes) where our official themes are developed.
+You need a Stripe account.  Make a RESTRICTED, READ-ONLY key with only Prices and Products allowed.  That goes into the Ghost admin panel.
+
+You need a custom yaml, if you want to let the Ruby theme mostly control how the storefront looks.  
+
+
+
 
 # Copyright & License
 
-Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE).
+Ruby: Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE).
+Changes: By Cathy Sarisky https://cathy.sarisky.link
+
