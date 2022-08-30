@@ -7,7 +7,7 @@
         
         {{#foreach posts}}
             <article data_slug="{{slug}}" class="{{post_class}} u-shadow"{{#if primary_tag.accent_color}} style="--tag-color: {{primary_tag.accent_color}};"{{/if}}>
-        
+            <div class="pricetag" id="{{slug}}" style="position: absolute; z-index: 12; background-color: white; ">$NOPRICE</div>
     {{#if feature_image}}
         {{#if featured}}
             <img

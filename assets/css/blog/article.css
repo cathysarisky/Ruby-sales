@@ -26,4 +26,10 @@
 
 .gh-article-image {
     grid-column: main-start / main-end;
+
+}
+.gh-article-image img {
+
+    max-height: 60vh ;
+    object-fit: contain;
 }

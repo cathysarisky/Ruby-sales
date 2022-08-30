@@ -188,6 +188,12 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
   }
   
 }).then(() => {
+  for (let item of products) {
+    console.log('item is',item)
+    let El = document.getElementById(item.slug)
+    if (El) {El.innerHTML = "$" + item.price}
+    
+  }
   if (productsEl) {
     // this is a page with a place for displaying products
     renderProducts()
