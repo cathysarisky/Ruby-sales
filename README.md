@@ -53,13 +53,16 @@ Two major options for how to show products for purchase:
 # Very much a work in progress: How to add the shopping features to a different theme:
 * You need assets/js/cart.js loaded on every page where you want the shopping cart modal to work.  Either site-wide code injection or else add it to your theme's assets (and gulpfile.js) and gulp zip it probably makes the most sense.
 * Also load the Stripe js file, which needs to happen before cart.js.  You need these lines:
-```    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+```html    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
        <script src="https://js.stripe.com/v3/"></script>
 ```
 Plus an additional line loading cart.js, if you don't include it with gulp.
 * Any post where you want prices to appear needs to have a <div> (or some other container) with an id set to the Stripe product ID (looks like prod_ABC123etc).
 * Add a "add to cart" button for any place you want one, something like this:
-```<span  data_slug="{{slug}}" class="addtocart">Add to cart</span>```
+```html
+<span  data_slug="{{slug}}" class="addtocart">Add to cart</span>
+```
 cart.js should take care of the rest, including adding the eventListener for that span, as long as you have the class and data_slug set.
 * If you want to create a post/page that pulls all the products from the Stripe database (option 1 above), see custom-rapidstorefront.hbs for an example.  [TODO: pull the storefront part out separate from page rendering to make it easier to include in a different template?]
 * If you want option 2 (storefront based on ghost posts), start from your template's index.hbs template and modify.  Add a routes.yaml to make a collection for products and use your custom template.
