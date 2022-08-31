@@ -277,3 +277,15 @@ totalItemsInCartEl.classList.add('bi-bag')
 
 // Need to update the cart items display on header
 renderSubtotal() ;
+
+
+ const cartEls = document.querySelectorAll('.addtocart');
+
+cartEls.forEach(element=> {
+  element.addEventListener('click', function handleClick(event) {
+  console.log(event.target.getAttribute("data_slug"));
+  addToCart(event.target.getAttribute("data_slug"))
+
+  });
+});
+
