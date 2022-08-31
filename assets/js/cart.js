@@ -23,28 +23,43 @@ function renderProducts() {
   products.forEach((product) => {
     console.log('onclick will be for',product.id)
     productsEl.innerHTML += `
-            <div class="item">
-                <div class="item-container">
-                    <div class="item-img">
-                        <img src="${product.imgSrc}" alt="${product.name}">
-                    </div>
-                    <div class="desc">
-                        <h2>${product.name}</h2>
-                        <h2>$${product.price}</h2>
-                        <p>
-                            ${product.description}
-                        </p>
-                        <p><a href="/${product.slug}">More details</a></p>
-                    </div>
-                    <div class="add-to-cart bi-bag-plus" onclick="addToCart('${product.id}')">
-                        
-                    </div>
-                </div>
-            </div>
+
+    <article data_slug=${product.slug} class="u-shadow post">
+    <div class="pricetag" id="${product.slug}" style="position: absolute; transform: translate(1rem, 0); z-index: 25; ">$${product.price}</div>
+
+<figure class="post-media">
+    <div class="u-placeholder same-height rectangle">
+    <img src="${product.imgSrc}" alt="${product.name}" class="post-image u-object-fit" loading="lazy">    
+
+    </div>
+</figure>
+
+<div class="post-wrapper">
+
+<header class="post-header">
+
+    <h2 class="post-title">
+    ${product.name}
+    </h2>
+</header>
+
+    <div class="post-excerpt">
+    ${product.description}
+    </div>
+
+</div>
+
+<footer class="post-footer">
+<span class="post-more"><a class="post-link" href="/products/${product.slug}">Details</a></span>
+<span style="z-index: 10" data_slug="${product.slug}" class="post-more addtocart">Add to cart</span>
+
+</footer>
+
+
         `;
   });
 }
-//renderProducts();
+
 
 // cart array
 let cart = JSON.parse(localStorage.getItem("CART")) || [];
