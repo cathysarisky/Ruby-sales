@@ -49,6 +49,7 @@
     margin-top: 12px;
     font-size: 1.4rem;
     line-height: 1.6;
+    flex-grow: 1
 }
 
 .has-serif-body .post-excerpt {
