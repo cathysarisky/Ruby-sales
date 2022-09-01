@@ -1,15 +1,15 @@
 routes:
 
 collections:
-  /products/:
-     permalink: /products/{slug}/
-     template: storefront
-     filter: primary_tag:products
   /:
      permalink: /{slug}/
      template: index
-
-
+     filter: primary_tag:-products
+  /products/:
+     permalink: /{slug}/
+     template: custom-storefront_one_post.hbs
+     filter: primary_tag:products
+     
 taxonomies:
   tag: /tag/{slug}/
 

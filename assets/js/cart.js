@@ -50,7 +50,7 @@ function renderProducts() {
 </div>
 
 <footer class="post-footer">
-<span class="post-more"><a class="post-link" href="/products/${product.slug}">Details</a></span>
+<span class="post-more"><a class="post-link" href="/${product.slug}">Details</a></span>
 <span style="z-index: 10" data_slug="${product.slug}" class="post-more addtocart">Add to cart</span>
 
 </footer>

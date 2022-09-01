@@ -1,0 +1,88 @@
+{{!< default}} <div class="gh-outer">
+    <main class="site-main gh-inner">
+
+        {{#post}}
+        <article data_slug="{{slug}}" class="{{post_class}} u-shadow" {{#if primary_tag.accent_color}}
+            style="--tag-color: {{primary_tag.accent_color}};" {{/if}}>
+
+            <header class="gh-article-header gh-canvas">
+                <h1 class="gh-article-title">{{title}}</h1>
+            </header>
+
+            <div class="gh-outer">
+                <main class="site-main gh-inner">
+
+
+
+                    {{#if feature_image}}
+                    {{#if featured}}
+                    <img class="post-image u-object-fit" src="{{img_url feature_image}}" alt="{{title}}" loading="lazy">
+                    {{else}}
+                    <figure class="post-media">
+                        <div class="u-placeholder same-height rectangle">
+                            <img class="post-image u-object-fit" srcset="{{img_url feature_image size=" s"}} 400w,
+                                {{img_url feature_image size="m" }} 750w, {{img_url feature_image size="l" }} 960w,
+                                {{img_url feature_image size="xl" }} 1140w, {{img_url feature_image size="xxl" }} 1920w"
+                                sizes="600px" src="{{img_url feature_image size=" l"}}" alt="{{title}}" loading="lazy">
+                        </div>
+                    </figure>
+                    {{/if}}
+                    {{/if}}
+                    <div class="gh-content gh-canvas">
+                        {{content}}
+                    </div>
+        </article>
+        {{/post}}
+        <div class="post-feed gh-feed">
+
+            {{#get "posts" filter='primary_tag:products+id:-{{post.id}}' as |one_product| }}
+            {{#foreach one_product}}
+            <article data_slug="{{slug}}" class="{{post_class}} u-shadow" {{#if primary_tag.accent_color}}
+                style="--tag-color: {{primary_tag.accent_color}};" {{/if}}>
+                <div class="pricetag" id="{{slug}}"
+                    style="position: absolute; transform: translate(1rem, 0); z-index: 25; ">$</div>
+                {{#if feature_image}}
+                {{#if featured}}
+                <img class="post-image u-object-fit" src="{{img_url feature_image}}" alt="{{title}}" loading="lazy">
+                {{else}}
+                <figure class="post-media">
+                    <div class="u-placeholder same-height rectangle">
+                        <img class="post-image u-object-fit" srcset="{{img_url feature_image size=" s"}} 400w, {{img_url
+                            feature_image size="m" }} 750w, {{img_url feature_image size="l" }} 960w, {{img_url
+                            feature_image size="xl" }} 1140w, {{img_url feature_image size="xxl" }} 1920w" sizes="600px"
+                            src="{{img_url feature_image size=" l"}}" alt="{{title}}" loading="lazy">
+                    </div>
+                </figure>
+                {{/if}}
+                {{/if}}
+
+                <div class="post-wrapper">
+
+                    <header class="post-header">
+                        <span class="post-tag"> {{#foreach tags from=2 }}{{name}}<br>{{/foreach}}</span>
+                        <h2 class="post-title">
+                            {{title}}
+                        </h2>
+                    </header>
+
+                    {{#if excerpt}}
+                    <div class="post-excerpt">
+                        {{excerpt words="20"}}
+                    </div>
+                    {{/if}}
+                </div>
+
+                <footer class="post-footer">
+                    <span class="post-more"><a class="post-link" href="/{{slug}}">Details</a></span>
+                    <span style="z-index: 10" data_slug="{{slug}}" class="post-more addtocart">Add to cart</span>
+
+                </footer>
+
+            </article>
+
+            {{/foreach}}
+            {{/get}}
+        </div>
+
+    </main>
+    </div>
