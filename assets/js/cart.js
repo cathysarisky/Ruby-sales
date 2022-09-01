@@ -214,6 +214,15 @@ fetch('https://api.stripe.com/v1/prices?expand[]=data.product', {
     renderProducts()
   }
   
+  const cartEls = document.querySelectorAll('.addtocart');
+
+  cartEls.forEach(element=> {
+    element.addEventListener('click', function handleClick(event) {
+    console.log(event.target.getAttribute("data_slug"));
+    addToCart(event.target.getAttribute("data_slug"))
+
+  });
+});
 })
 
 var stripe = Stripe(stripe_pub_key);
@@ -279,13 +288,4 @@ totalItemsInCartEl.classList.add('bi-bag')
 renderSubtotal() ;
 
 
- const cartEls = document.querySelectorAll('.addtocart');
-
-cartEls.forEach(element=> {
-  element.addEventListener('click', function handleClick(event) {
-  console.log(event.target.getAttribute("data_slug"));
-  addToCart(event.target.getAttribute("data_slug"))
-
-  });
-});
 
