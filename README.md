@@ -60,7 +60,7 @@ Two major options for how to show products for purchase:
        <script src="https://js.stripe.com/v3/"></script>
 ```
 Plus an additional line loading cart.js, if you don't include it with gulp.
-* Any post where you want prices to appear needs to have a <div> (or some other container) with an id set to the Stripe product ID (looks like prod_ABC123etc).
+* Any post where you want prices to appear needs to have a \<div\> (or some other container) with an id set to the Stripe product ID (looks like prod_ABC123etc).
 * Add a "add to cart" button for any place you want one, something like this:
 ```html
 <span  data_slug="{{slug}}" class="addtocart">Add to cart</span>
