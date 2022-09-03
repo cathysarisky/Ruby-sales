@@ -1,14 +1,14 @@
-{{!< default}} 
-{{#post}} 
+{{!< default}} {{#post}} 
+<style>  body { background-image: linear-gradient(0deg,#efefef 65%,#fff) };</style> 
 <article data_slug="{{slug}}" class="{{post_class}} u-shadow" {{#if primary_tag.accent_color}}
     style="--tag-color: {{primary_tag.accent_color}};" {{/if}}>
-    
+
     <header class="gh-article-header gh-canvas">
         <h1 class="gh-article-title">{{title}}</h1>
     </header>
 
     <div class="gh-outer">
-        <main class="site-main gh-inner">
+        <main class="site-main gh-inner" style="padding-bottom: 20px;">
 
 
 
@@ -28,14 +28,22 @@
             {{/if}}
             <div class="gh-content gh-canvas">
                 {{content}}
+
             </div>
-</article>
-{{/post}}
-            <div class="post-feed gh-feed products"></div>
-
-
         </main>
     </div>
+    </article>
+    {{/post}}
+    <div class="site-content gh-outer">
+    <div class="site-main gh-inner">
+        <div class="post-feed gh-feed products">
+
+        </div>
+
+</div>
+
+    </div>
+
     <script>
         const cartEls = document.querySelectorAll('.addtocart');
 
