@@ -24,7 +24,7 @@ function renderProducts() {
     console.log('onclick will be for',product.id)
     productsEl.innerHTML += `
 
-    <article data_slug=${product.slug} class="u-shadow post">
+    <article data_slug=${product.slug} class="u-shadow post post-link">
     <div class="pricetag" id="${product.slug}" style="position: absolute; transform: translate(1rem, 0); z-index: 25; ">$${product.price}</div>
 
 <figure class="post-media">
