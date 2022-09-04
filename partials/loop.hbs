@@ -4,9 +4,13 @@
         {{#if featured}}
             <img
                 class="post-image u-object-fit"
-                src="{{img_url feature_image}}"
+                srcset="{{img_url feature_image size="s"}} 400w,
+                            {{img_url feature_image size="m"}} 750w,
+                            {{img_url feature_image size="l"}} 960w"
+                sizes="600px"
+                src="{{img_url feature_image size="m"}}"
                 alt="{{title}}"
-                loading="lazy"
+                
             >
         {{else}}
         <figure class="post-media">
@@ -15,11 +19,9 @@
                     class="post-image u-object-fit"
                     srcset="{{img_url feature_image size="s"}} 400w,
                             {{img_url feature_image size="m"}} 750w,
-                            {{img_url feature_image size="l"}} 960w,
-                            {{img_url feature_image size="xl"}} 1140w,
-                            {{img_url feature_image size="xxl"}} 1920w"
+                            {{img_url feature_image size="l"}} 960w"
                     sizes="600px"
-                    src="{{img_url feature_image size="l"}}"
+                    src="{{img_url feature_image size="m"}}"
                     alt="{{title}}"
                     loading="lazy"
                 >
@@ -27,6 +29,8 @@
         </figure>
         {{/if}}
     {{/if}}
+
+
 
     <div class="post-wrapper">
         <header class="post-header">
