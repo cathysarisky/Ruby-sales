@@ -15,6 +15,17 @@
         {{else}}
         <figure class="post-media">
             <div class="u-placeholder same-height rectangle">
+                <picture class="post-image u-object-fit">
+                <source 
+                    srcset="{{img_url feature_image size="s" format="webp"}} 400w,
+                            {{img_url feature_image size="m" format="webp"}} 750w,
+                            {{img_url feature_image size="l"format="webp"}} 960w"
+                    sizes="600px"
+                    src="{{img_url feature_image size="m" format="webp"}}"
+                    alt="{{title}}"
+                    loading="lazy"
+                    type="image/webp"
+                    >
                 <img
                     class="post-image u-object-fit"
                     srcset="{{img_url feature_image size="s"}} 400w,
@@ -25,6 +36,7 @@
                     alt="{{title}}"
                     loading="lazy"
                 >
+                </picture>
             </div>
         </figure>
         {{/if}}
